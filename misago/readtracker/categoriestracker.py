@@ -24,7 +24,7 @@ def make_read_aware(user, categories):
             categories_dict[category.pk] = category
 
     if categories_dict:
-        categories_records = user.categoryread_set.filter(category__in=categories_dict.keys())
+        categories_records = user.categoryread_set.filter(category__in=list(categories_dict.keys()))
 
         for record in categories_records:
             category = categories_dict[record.category_id]

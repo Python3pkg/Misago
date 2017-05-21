@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.contrib.auth import get_user_model
 from django.test.client import BOUNDARY, MULTIPART_CONTENT, encode_multipart

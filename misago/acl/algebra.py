@@ -21,7 +21,7 @@ def sum_acls(result_acl, acls=None, roles=None, key=None, **permissions):
             )
         acls = _roles_acls(key, roles)
 
-    for permission, compare in permissions.items():
+    for permission, compare in list(permissions.items()):
         try:
             permission_value = result_acl[permission]
         except KeyError:

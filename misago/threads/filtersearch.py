@@ -11,6 +11,6 @@ def filter_search(search, filters=None):
     filters = filters or SEARCH_FILTERS
 
     for filter in filters:
-        search = filter(search) or search
+        search = list(filter(search)) or search
 
     return search

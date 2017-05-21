@@ -44,7 +44,7 @@ class AvatarsStoreTests(TestCase):
 
         # another avatar change deleted old avatars
         store.store_new_avatar(user, test_image)
-        for old_avatar in avatars_dict.values():
+        for old_avatar in list(avatars_dict.values()):
             avatar_path = Path(old_avatar.image.path)
             self.assertFalse(avatar_path.exists())
             self.assertFalse(avatar_path.isfile())
@@ -73,7 +73,7 @@ class AvatarsStoreTests(TestCase):
         # delete avatar
         store.delete_avatar(user)
 
-        for removed_avatar in new_avatars_dict.values():
+        for removed_avatar in list(new_avatars_dict.values()):
             avatar_path = Path(removed_avatar.image.path)
             self.assertFalse(avatar_path.exists())
             self.assertFalse(avatar_path.isfile())

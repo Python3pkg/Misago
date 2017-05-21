@@ -65,7 +65,7 @@ def fetch_categories_cutoffs_for_threads(user, threads):
 
 
 def make_threads_dict_read_aware(user, threads_dict):
-    for record in user.threadread_set.filter(thread__in=threads_dict.keys()):
+    for record in user.threadread_set.filter(thread__in=list(threads_dict.keys())):
         if record.thread_id in threads_dict:
             thread = threads_dict[record.thread_id]
             thread.is_read = record.last_read_on >= thread.last_post_on

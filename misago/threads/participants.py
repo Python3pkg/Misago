@@ -29,7 +29,7 @@ def make_threads_participants_aware(user, threads):
 
     participants_qs = ThreadParticipant.objects.filter(
         user=user,
-        thread_id__in=threads_dict.keys(),
+        thread_id__in=list(threads_dict.keys()),
     )
 
     for participant in participants_qs:
@@ -58,7 +58,7 @@ def set_users_unread_private_threads_sync(users=None, participants=None, exclude
     if participants:
         users_ids += [p.user_id for p in participants]
     if exclude_user:
-        users_ids = filter(lambda u: u != exclude_user.pk, users_ids)
+        users_ids = [u for u in users_ids if u != exclude_user.pk]
 
     if not users_ids:
         return

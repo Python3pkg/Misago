@@ -9,5 +9,5 @@ def fetch_assoc(query, *args):
         columns = [col[0] for col in cursor.description]
         row = cursor.fetchone()
         while row:
-            yield dict(zip(columns, row))
+            yield dict(list(zip(columns, row)))
             row = cursor.fetchone()

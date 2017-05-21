@@ -34,14 +34,14 @@ def test_mail_users(request):
 
 
 def test_pagination(request, page=None):
-    items = range(15)
+    items = list(range(15))
     page = paginate(items, page, 5)
     return HttpResponse(",".join([str(x) for x in page.object_list]))
 
 
 @api_view()
 def test_paginated_response(request):
-    data = range(100)
+    data = list(range(100))
     page = paginate(data, 2, 10)
 
     return paginated_response(page)
@@ -49,7 +49,7 @@ def test_paginated_response(request):
 
 @api_view()
 def test_paginated_response_data(request):
-    data = range(100)
+    data = list(range(100))
     page = paginate(data, 2, 10)
 
     return paginated_response(page, data=['a', 'b', 'c', 'd', 'e'])

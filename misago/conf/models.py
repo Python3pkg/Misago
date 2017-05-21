@@ -14,7 +14,7 @@ class SettingsGroupsManager(models.Manager):
             groups_dict[_(group.name)] = group
 
         ordered_groups = []
-        for key in groups_dict.keys():
+        for key in list(groups_dict.keys()):
             ordered_groups.append(groups_dict[key])
         return ordered_groups
 

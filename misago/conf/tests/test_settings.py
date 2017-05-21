@@ -73,7 +73,7 @@ class GatewaySettingsTests(TestCase):
         self.assertEqual(gateway.fish_name, 'Public Eric')
         self.assertEqual(gateway.private_fish_name, 'Private Eric')
 
-        public_settings = gateway.get_public_settings().keys()
+        public_settings = list(gateway.get_public_settings().keys())
         self.assertIn('fish_name', public_settings)
         self.assertNotIn('private_fish_name', public_settings)
 

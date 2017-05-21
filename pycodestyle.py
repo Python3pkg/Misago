@@ -25,7 +25,7 @@ def walk_directory(root, dirs, files):
                 filesource = cleanup.fix_formatting(filesource)
 
             if org_source != filesource:
-                print 'afterclean: %s' % os.path.join(root, filename)
+                print('afterclean: %s' % os.path.join(root, filename))
                 with codecs.open(os.path.join(root, filename), 'w', 'utf-8') as f:
                     f.write(filesource)
 

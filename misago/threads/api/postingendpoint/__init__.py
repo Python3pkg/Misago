@@ -83,7 +83,7 @@ class PostingEndpoint(object):
 
     def is_valid(self):
         """validate data against all serializers"""
-        for serializer in self._serializers.values():
+        for serializer in list(self._serializers.values()):
             if not serializer.is_valid():
                 self.errors.update(serializer.errors)
 

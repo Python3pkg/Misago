@@ -64,11 +64,11 @@ def make_users_status_aware(viewer, users, fetch_state=False):
 
     if fetch_state:
         # Fill ban cache on users
-        for ban_cache in BanCache.objects.filter(user__in=users_dict.keys()):
+        for ban_cache in BanCache.objects.filter(user__in=list(users_dict.keys())):
             users_dict[ban_cache.user_id].ban_cache = ban_cache
 
         # Fill user online trackers
-        for online_tracker in Online.objects.filter(user__in=users_dict.keys()):
+        for online_tracker in Online.objects.filter(user__in=list(users_dict.keys())):
             users_dict[online_tracker.user_id].online_tracker = online_tracker
 
     # Fill user states

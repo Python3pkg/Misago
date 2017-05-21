@@ -226,7 +226,7 @@ def filter_read_threads_queryset(user, categories, list_type, queryset):
         condition = condition | Q(id__in=read_threads)
 
         if categories_dict:
-            for category_id, category_cutoff in categories_dict.items():
+            for category_id, category_cutoff in list(categories_dict.items()):
                 condition = condition | Q(
                     category_id=category_id,
                     last_post_on__lte=category_cutoff,
@@ -248,7 +248,7 @@ def filter_read_threads_queryset(user, categories, list_type, queryset):
         if categories_dict:
             conditions = None
 
-            for category_id, category_cutoff in categories_dict.items():
+            for category_id, category_cutoff in list(categories_dict.items()):
                 condition = Q(
                     category_id=category_id,
                     last_post_on__lte=category_cutoff,

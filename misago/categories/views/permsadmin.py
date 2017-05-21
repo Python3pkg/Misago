@@ -171,7 +171,7 @@ class RoleCategoriesACL(RoleAdmin, generic.ModelFormView):
         forms = []
         forms_are_valid = True
         for category in categories:
-            category.level_range = range(category.level - 1)
+            category.level_range = list(range(category.level - 1))
             FormType = RoleCategoryACLFormFactory(category, roles, choices.get(category.pk))
 
             if request.method == 'POST':

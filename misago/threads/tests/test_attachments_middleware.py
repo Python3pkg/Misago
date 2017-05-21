@@ -74,7 +74,7 @@ class AttachmentsMiddlewareTests(AuthenticatedUserTestCase):
 
     def test_middleware_validates_ids(self):
         """middleware validates attachments ids"""
-        INPUTS = ['none', ['a', 'b', 123], range(settings.MISAGO_POST_ATTACHMENTS_LIMIT + 1)]
+        INPUTS = ['none', ['a', 'b', 123], list(range(settings.MISAGO_POST_ATTACHMENTS_LIMIT + 1))]
 
         for test_input in INPUTS:
             middleware = AttachmentsMiddleware(
@@ -275,7 +275,7 @@ class AttachmentsMiddlewareTests(AuthenticatedUserTestCase):
 class ValidateAttachmentsCountTests(AuthenticatedUserTestCase):
     def test_validate_attachments_count(self):
         """too large count of attachments is rejected"""
-        validate_attachments_count(range(settings.MISAGO_POST_ATTACHMENTS_LIMIT))
+        validate_attachments_count(list(range(settings.MISAGO_POST_ATTACHMENTS_LIMIT)))
 
         with self.assertRaises(serializers.ValidationError):
-            validate_attachments_count(range(settings.MISAGO_POST_ATTACHMENTS_LIMIT + 1))
+            validate_attachments_count(list(range(settings.MISAGO_POST_ATTACHMENTS_LIMIT + 1)))

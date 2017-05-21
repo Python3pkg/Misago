@@ -40,12 +40,12 @@ class CategoriesList(CategoryAdmin, generic.ListView):
         children_lists = {}
 
         for item in context['items']:
-            item.level_range = range(item.level - 1)
+            item.level_range = list(range(item.level - 1))
             item.first = False
             item.last = False
             children_lists.setdefault(item.parent_id, []).append(item)
 
-        for level_items in children_lists.values():
+        for level_items in list(children_lists.values()):
             level_items[0].first = True
             level_items[-1].last = True
 

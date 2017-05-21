@@ -14,9 +14,9 @@ def walk_directory(root, dirs, files):
 def clean_file(file_path):
     py_source = file(file_path).read()
     if 'from ..' in py_source or 'import ..' in py_source:
-        print '====' * 8
-        print file_path
-        print '====' * 8
+        print('====' * 8)
+        print(file_path)
+        print('====' * 8)
 
         package = file_path.rstrip('.py').split('/')
 
@@ -28,7 +28,7 @@ def clean_file(file_path):
 
         #print py_source
         with open(file_path, 'w') as package:
-            print file_path
+            print(file_path)
             package.write(py_source)
 
 
@@ -50,4 +50,4 @@ if __name__ == '__main__':
     for args in os.walk('../misago'):
         walk_directory(*args)
 
-    print "\nDone! Don't forget to run isort to fix imports ordering!"
+    print("\nDone! Don't forget to run isort to fix imports ordering!")

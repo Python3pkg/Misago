@@ -18,7 +18,7 @@ class TargetedView(AdminView):
                 select_for_update = select_for_update.select_for_update()
             # Does not work on Python 3:
             # return select_for_update.get(pk=kwargs[kwargs.keys()[0]])
-            (pk, ) = kwargs.values()
+            (pk, ) = list(kwargs.values())
             return select_for_update.get(pk=pk)
         else:
             return self.get_model()()

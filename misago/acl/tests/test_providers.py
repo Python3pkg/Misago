@@ -57,7 +57,7 @@ class PermissionProvidersTests(TestCase):
         providers_setting = settings.MISAGO_ACL_EXTENSIONS
         self.assertEqual(len(providers_dict), len(providers_setting))
 
-        for extension, module in providers_dict.items():
+        for extension, module in list(providers_dict.items()):
             self.assertTrue(isinstance(extension, six.string_types))
             self.assertEqual(type(module), ModuleType)
 

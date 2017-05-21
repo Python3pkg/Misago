@@ -39,7 +39,7 @@ class DBSettings(object):
 
     def get_public_settings(self):
         public_settings = {}
-        for name, setting in self._settings.items():
+        for name, setting in list(self._settings.items()):
             if setting['is_public']:
                 public_settings[name] = setting['value']
         return public_settings
@@ -76,7 +76,7 @@ class DBSettings(object):
         return new_value
 
     def reset_settings(self):
-        for setting, original_value in self._overrides.items():
+        for setting, original_value in list(self._overrides.items()):
             self._settings[setting]['value'] = original_value
             self._settings[setting].pop('real_value', None)
 

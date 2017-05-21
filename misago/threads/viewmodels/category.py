@@ -20,7 +20,7 @@ class ViewModel(BaseViewModel):
         self._model = self.get_category(request, self._categories, **kwargs)
 
         self._subcategories = list(filter(self._model.has_child, self._categories))
-        self._children = list(filter(lambda s: s.parent_id == self._model.pk, self._subcategories))
+        self._children = list([s for s in self._subcategories if s.parent_id == self._model.pk])
 
     @property
     def categories(self):

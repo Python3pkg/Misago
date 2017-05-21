@@ -33,7 +33,7 @@ setup(
         "the box and plays nicely with other projects like Django-CMS."
     ),
     url='http://www.misago-project.org/',
-    author=u'Rafał Pitoń',
+    author='Rafał Pitoń',
     author_email='kontakt@rpiton.com',
     install_requires=REQUIREMENTS,
     packages=find_packages(exclude=EXCLUDE_FROM_PACKAGES),

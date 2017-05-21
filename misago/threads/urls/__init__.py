@@ -89,7 +89,7 @@ def goto_patterns(prefix, **views):
         url_name = '%s-post' % prefix
         urls.append(url(url_pattern, post_view.as_view(), name=url_name))
 
-    for name, view in views.items():
+    for name, view in list(views.items()):
         url_pattern = r'^%s/(?P<slug>[-a-zA-Z0-9]+)/(?P<pk>\d+)/%s/$' % (prefix[0], name)
         url_name = '%s-%s' % (prefix, name)
         urls.append(url(url_pattern, view.as_view(), name=url_name))

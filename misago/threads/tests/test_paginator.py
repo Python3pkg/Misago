@@ -89,7 +89,7 @@ class PostsPaginatorTests(TestCase):
         num_items = 16
         items = [i + 1 for i in range(num_items)]
 
-        for per_page, orphans in product(range(num_items), range(num_items)):
+        for per_page, orphans in product(list(range(num_items)), list(range(num_items))):
             paginator = PostsPaginator(items, per_page + 2, orphans)
             pages = self.get_paginator_items_list(paginator)
             for p, page in enumerate(pages):

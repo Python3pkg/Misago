@@ -27,7 +27,7 @@ def add_mentions(request, result):
         add_mentions_to_element(request, element, mentions_dict)
 
     result['parsed_text'] = six.text_type(soup.body)[6:-7].strip()
-    result['mentions'] = list(filter(bool, mentions_dict.values()))
+    result['mentions'] = list(filter(bool, list(mentions_dict.values())))
 
 
 def add_mentions_to_element(request, element, mentions_dict):
@@ -59,7 +59,7 @@ def parse_string(request, element, mentions_dict):
 
         if mentions_dict[username]:
             user = mentions_dict[username]
-            return u'<a href="{}">@{}</a>'.format(user.get_absolute_url(), user.username)
+            return '<a href="{}">@{}</a>'.format(user.get_absolute_url(), user.username)
         else:
             # we've failed to resolve user for username
             return matchobj.group(0)

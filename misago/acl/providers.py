@@ -30,7 +30,7 @@ class PermissionProviders(object):
                 self._providers_dict[namespace].register_with(self)
 
     def _change_lists_to_tupes(self, types_dict):
-        for hashType in types_dict.keys():
+        for hashType in list(types_dict.keys()):
             types_dict[hashType] = tuple(types_dict[hashType])
 
     def acl_annotator(self, hashable_type, func):

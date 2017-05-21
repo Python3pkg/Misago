@@ -92,7 +92,7 @@ def add_acl_to_category(user, target):
 
 def serialize_categories_alcs(serialized_acl):
     categories_acl = []
-    for category, acl in serialized_acl.pop('categories').items():
+    for category, acl in list(serialized_acl.pop('categories').items()):
         if acl['can_browse']:
             categories_acl.append({
                 'id': category,

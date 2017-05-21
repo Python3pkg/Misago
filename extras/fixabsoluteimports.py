@@ -38,7 +38,7 @@ def clean_file(file_path):
 
         if save_file:
             with open(file_path, 'w') as package:
-                print file_path
+                print(file_path)
                 package.write(py_source)
 
 
@@ -90,4 +90,4 @@ if __name__ == '__main__':
     for args in os.walk('../misago'):
         walk_directory(*args)
 
-    print "\nDone! Don't forget to run isort to fix imports ordering!"
+    print("\nDone! Don't forget to run isort to fix imports ordering!")
